@@ -8,6 +8,9 @@ end
 # Allows sign-in with Google
 gem "omniauth-google-oauth2", "~> 0.2.1"
 
+# Use activeRecordStore rather than CookieStore
+gem "activerecord-session_store"
+
 
 # Allows photo upload/display
 gem "paperclip", "~> 5.2.1"

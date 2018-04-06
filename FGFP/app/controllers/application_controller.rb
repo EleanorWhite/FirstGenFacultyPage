@@ -7,5 +7,9 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
+  # Note that this is a hacky way to define the admin
+  def admin_id
+    @admin_id = 1
+  end
 
 end

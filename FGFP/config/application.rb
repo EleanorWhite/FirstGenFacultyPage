@@ -11,11 +11,14 @@ module FGFP
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 
+   #config.api_only=false
 
     #TODO: figure out why uncommenting the end of this line throws a CSRF error
-    config.session_store :cookie_store, key: '_interslice_session' #, domain: 'http://localhost:3000/auth/google_oauth2/callback'
+    #config.session_store :cookie_store, key: '_interslice_session' #, domain: 'http://localhost:3000/auth/google_oauth2/callback'
+    config.session_store :activerecord_store, key: '_my_app_session' #, domain: 'http://localhost:3000/auth/google_oauth2/callback'
     config.middleware.use ActionDispatch::Cookies # Required for all session management
-    config.middleware.use ActionDispatch::Session::CookieStore, config.session_options
+    #config.middleware.use ActionDispatch::Session::CookieStore, config.session_options
+    config.middleware.use ActionDispatch::Session::ActiveRecordStore, config.session_options
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

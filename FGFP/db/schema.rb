@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180320234257) do
+ActiveRecord::Schema.define(version: 20180406064222) do
 
   create_table "departments", force: :cascade do |t|
     t.string "name"
@@ -41,6 +41,15 @@ ActiveRecord::Schema.define(version: 20180320234257) do
     t.index ["user_id"], name: "index_profs_on_user_id"
   end
 
+  create_table "sessions", force: :cascade do |t|
+    t.string "session_id", null: false
+    t.text "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["session_id"], name: "index_sessions_on_session_id", unique: true
+    t.index ["updated_at"], name: "index_sessions_on_updated_at"
+  end
+
   create_table "testimonials", force: :cascade do |t|
     t.datetime "date"
     t.text "comment"
@@ -54,13 +63,6 @@ ActiveRecord::Schema.define(version: 20180320234257) do
     t.string "name"
     t.string "oauth_token"
     t.datetime "oauth_expires_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "testimonials", force: :cascade do |t|
-    t.datetime "date"
-    t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
